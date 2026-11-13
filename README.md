@@ -1,149 +1,101 @@
 # PageForge Studio
 
-**Versão:** 1.2  
-**Idioma:** Português (Brasil)  
-**Plataforma:** Navegadores modernos de desktop  
-**Tipo:** Aplicativo local em arquivo HTML, sem instalação
+**Versão 1.6 · Composição, organização e exportação de imagens**
 
-## Visão geral
+O **PageForge Studio** é um aplicativo web desenvolvido em HTML, CSS e JavaScript para importar, organizar, compor e exportar imagens de páginas de livros, documentos e outros materiais gráficos. Funciona diretamente no navegador, com uma interface escura e compacta, sem exigir instalação, cadastro ou servidor para o processamento dos arquivos locais.
 
-O **PageForge Studio** é um aplicativo para organizar e unir imagens de páginas digitalizadas de livros e documentos. Permite importar arquivos por arrastar e soltar, conferir a sequência, reorganizar páginas e exportar o resultado em imagem única ou PDF com páginas de tamanho padronizado.
+## Funcionalidades
 
-O processamento ocorre no navegador do próprio computador. Não exige cadastro nem envio dos arquivos a um servidor.
+- Importação de múltiplas imagens do computador por seleção ou arrastar e soltar.
+- Importação por endereços URL diretos de imagens, com botão **+** para acrescentar campos.
+- Organização alfabética inicial, reordenação por arrastar, inversão da ordem e remoção de itens.
+- Miniaturas, dimensões, tamanho dos arquivos e indicação aproximada de resolução.
+- Pré-visualização antes da exportação.
+- Composição vertical, horizontal ou exportação de imagens individuais (modo padrão).
+- Geração de PDF com uma imagem por página e dimensões padronizadas.
+- Ajuste de resolução (100%, 150%, 200%, 300% ou personalizada de 25% a 400%).
+- Opções de fundo branco, normalização de dimensões e espaçamento entre imagens.
+- Exportação de várias imagens individuais em um único arquivo ZIP.
+- Layout adaptado ao espaço da janela, com rolagem interna nos painéis quando necessário.
 
-## Requisitos
+## Formatos
 
-- Computador com navegador moderno, como Google Chrome ou Microsoft Edge.
-- Arquivo `PageForge_Studio_v1.2.html` salvo no computador.
-- Memória disponível compatível com a quantidade e a resolução das imagens.
+### Entrada
 
-Não é necessária instalação de dependências nem conexão à internet para as funções locais do arquivo HTML.
+São reconhecidas extensões como **JPG/JPEG, PNG, TIFF/TIF, BMP, SVG, WEBP, GIF, AVIF e ICO**, além de algumas variantes. A leitura efetiva depende dos recursos de decodificação do navegador. TIFF possui decodificação local para formatos comuns, mas algumas compressões ou variações não são suportadas. Arquivos HEIC/HEIF também dependem do navegador.
 
-## Como iniciar
+### Saída
 
-1. Baixe e salve `PageForge_Studio_v1.2.html`.
-2. Dê um duplo clique no arquivo ou abra-o no navegador.
-3. Arraste as imagens para a área de upload ou clique nela para selecionar arquivos.
-4. Confira a lista e ajuste a ordem conforme necessário.
-5. Escolha o formato e as opções de composição.
-6. Clique em **Exportar composição** para salvar o resultado.
-
-## Formatos de entrada
-
-- **JPG/JPEG**
-- **PNG**
-- **WEBP**
-- **BMP**
-- **SVG**
-- **TIFF/TIF:** suporte a variantes comuns; determinadas compressões, profundidades de cor e organizações do arquivo podem ser incompatíveis.
-
-A leitura de alguns tipos depende também das capacidades do navegador.
-
-## Organização das imagens
-
-Ao importar arquivos, o aplicativo apresenta uma **ordem alfabética inicial**. É possível:
-
-- Arrastar os itens pelo ícone de movimentação para personalizar a sequência.
-- Usar **A → Z** para ordenar novamente.
-- Usar **Inverter** para reverter a ordem atual.
-- Remover imagens individualmente ou usar **Limpar** para começar outra sequência.
-
-A exportação respeita a ordem exibida na lista.
-
-## Modos de composição
-
-| Modo | Resultado |
+| Formato | Uso e observações |
 | --- | --- |
-| Sequência vertical | Une as imagens de cima para baixo em uma imagem única. |
-| Sequência horizontal | Une as imagens lado a lado em uma imagem única. |
-| Uma imagem por página em PDF | Cria um PDF multipáginas, seguindo a ordem da lista. |
+| **PNG** (`.png`) | Imagem sem perda na codificação. |
+| **JPEG** (`.jpg`) | Imagem compactada com controle de qualidade. |
+| **WEBP** (`.webp`) | Formato de imagem otimizado com controle de qualidade. |
+| **ICO** (`.ico`) | Ícone com versões de **16, 32, 48, 64, 128 e 256 px** no mesmo arquivo. |
+| **SVG** (`.svg`) | Contêiner SVG com a imagem PNG incorporada em Base64; **não vetoriza** automaticamente imagens rasterizadas. |
+| **PDF** (`.pdf`) | PDF multipáginas, com uma imagem por página. |
 
-## Formatos de saída
+> **Importante:** a extensão correta para ícones do Windows e favicons é `.ico`, não `.icon`.
 
-| Formato | Características |
-| --- | --- |
-| **PNG** | Imagem única; compressão sem perda. |
-| **JPG/JPEG** | Imagem única; qualidade ajustável, com compressão com perda. |
-| **WEBP** | Imagem única; qualidade ajustável e arquivo geralmente mais compacto. |
-| **PDF** | Um documento multipáginas, com uma imagem por página e tamanho uniforme de página. |
+## Como usar
 
-**Importante:** a saída PDF reúne imagens. Não aplica OCR e não transforma o texto digitalizado em texto pesquisável ou editável.
+1. Abra o arquivo `index.html` no navegador.
+2. Arraste imagens para a área de importação ou clique para selecionar os arquivos.
+3. Opcionalmente, cole uma URL direta de imagem e use **+** para adicionar mais URLs; depois, clique em **Importar imagens das URLs**.
+4. Organize as imagens por ordem alfabética, usando o ícone de arraste ou os comandos **A → Z** e **Inverter**.
+5. Escolha o **Modo de composição**: imagens individuais, sequência vertical, sequência horizontal ou uma imagem por página em PDF.
+6. Selecione o **Formato de exportação**, ajuste a escala e as demais preferências.
+7. Confira a prévia e clique em **Exportar composição**.
 
-## Padronização das páginas do PDF (corrigida na versão 1.2)
+**Saída individual:** um arquivo de imagem é baixado diretamente; quando houver várias imagens, elas são agrupadas em um `.zip`. Em composições vertical ou horizontal, o resultado é um arquivo de imagem, exceto quando o formato PDF é selecionado.
 
-Na exportação para PDF, **todas as páginas recebem o mesmo tamanho físico**, mesmo que os arquivos originais tenham dimensões diferentes. A imagem é ajustada proporcionalmente à área disponível e centralizada, sem ser deformada.
+## Instalação local
 
-**Tamanhos de página disponíveis:**
+Não é necessário executar comandos, instalar pacotes ou configurar um ambiente de desenvolvimento.
 
-- A4 — 210 × 297 mm
-- A5 — 148 × 210 mm
-- Carta — aproximadamente 216 × 279 mm
-- Ofício — aproximadamente 216 × 356 mm
-- Igual à maior imagem (com proporção definida pela primeira imagem)
+```text
+PageForge-Studio/
+├── index.html
+└── README.md
+```
 
-**Margens configuráveis:** 0, 5, 10, 15 ou 20 mm.
+Basta abrir `index.html` em um navegador atualizado (como Chrome, Edge ou Firefox). O processamento das imagens locais ocorre no próprio dispositivo.
 
-Se as imagens tiverem proporções distintas, poderão aparecer áreas em branco; isso é esperado para **preservar a imagem inteira sem cortes**.
+## Publicação no GitHub Pages
 
-A opção **Uniformizar largura/altura** é destinada à composição em JPG/PNG/WEBP, e não substitui a escolha do tamanho de página do PDF.
+1. Crie um repositório no GitHub.
+2. Envie o aplicativo com o nome **`index.html`** e este documento com o nome **`README.md`** para a raiz do repositório.
+3. Acesse **Settings → Pages**.
+4. Em **Build and deployment**, selecione **Deploy from a branch**.
+5. Escolha a branch principal (geralmente `main`) e a pasta **`/ (root)`**; salve.
+6. Após a publicação, abra o endereço disponibilizado pelo GitHub Pages.
 
-## Resolução e qualidade
+O aplicativo é estático: não requer backend ou chave de API para suas funções locais.
 
-O aplicativo permite selecionar escalas de **100%, 150%, 200%, 300%**, além de escala personalizada entre **25% e 400%**. Para JPG e WEBP, a qualidade de compressão é configurável.
+## Observações e limitações
 
-A classificação de qualidade exibida pelo aplicativo é **indicativa**, com base nas dimensões da imagem. Aumentar a escala amplia o arquivo de saída, mas **não recupera detalhes ausentes no original**. Para melhores resultados, utilize imagens de origem nítidas e com boa resolução.
+- **URLs externas:** a importação usa `fetch` e depende de o servidor remoto permitir acesso entre origens (**CORS**). Nem todo link de página ou rede social é um link direto para um arquivo de imagem.
+- **SVG:** a exportação gera um documento SVG válido com uma imagem raster incorporada, não um arquivo vetorial editável por caminhos.
+- **ICO:** a exportação gera um pacote multirresolução; conteúdos retangulares são ajustados proporcionalmente e centralizados em telas quadradas.
+- **PDF:** as imagens são ajustadas para caber nas páginas, mantendo suas proporções. O documento permite os tamanhos A4, A5, Carta, Ofício e um modo baseado nas dimensões das imagens.
+- **Nitidez:** ampliar a resolução de exportação não recupera detalhes inexistentes no original.
+- **Limites do navegador:** composições muito grandes podem exceder os limites de tamanho ou memória do Canvas; reduza a escala ou prefira a exportação paginada em PDF.
+- **Privacidade:** arquivos importados localmente são processados no navegador. A importação por URL consulta o servidor que hospeda a imagem.
+- **Uso offline:** os recursos locais funcionam sem conexão após o arquivo HTML estar disponível; a importação por URL requer acesso à internet.
 
-## Configuração sugerida para páginas digitalizadas
+## Tecnologias
 
-Para gerar um documento com páginas homogêneas:
+- HTML5 e CSS3
+- JavaScript sem bibliotecas externas obrigatórias
+- Canvas API, File API e Blob API
+- Exportação ZIP implementada no próprio código
+- Geração de PDF diretamente no navegador
 
-1. Importe as imagens e ajuste a ordem.
-2. Escolha **Uma imagem por página em PDF**.
-3. Selecione **PDF** como formato.
-4. Defina **A4** (ou o tamanho real pretendido).
-5. Ajuste as margens para **5 mm**, conforme necessário.
-6. Escolha a escala de saída considerando nitidez, tamanho do arquivo e memória disponível.
-7. Confira a prévia e exporte.
+## Histórico resumido
 
-A pré-visualização do PDF mostra a **primeira página**; confira o documento final para verificar o enquadramento das demais.
+- **v1.5:** inclusão da importação de imagens por múltiplas URLs, com campos adicionais sob demanda, modo individual padrão e ajustes de layout.
+- **v1.6:** inclusão das saídas **ICO** e **SVG**, preservando PNG, JPEG, WEBP e PDF.
 
-## Privacidade e funcionamento local
+## Licença
 
-Os arquivos são processados no próprio navegador e o resultado é salvo por download local. O aplicativo não solicita conta nem contém uma rotina de upload dos documentos para um serviço remoto.
-
-## Limitações conhecidas
-
-- **TIFF:** algumas variantes não são compatíveis.
-- **Memória e tamanho:** conjuntos muito grandes ou resoluções extremas podem exceder os limites de canvas/memória do navegador; reduza a escala ou divida o lote.
-- **PDF:** as imagens são incorporadas como páginas rasterizadas; não há OCR.
-- **Enquadramento:** proporções diferentes geram margens visuais diferentes dentro da página fixa; o conteúdo não é cortado intencionalmente.
-- **Prévia:** no modo PDF, é exibida uma prévia da primeira página, não de todas.
-- **Tratamento de imagem:** a versão 1.2 não oferece correção automática de perspectiva, remoção automática de bordas ou alinhamento por OCR.
-
-## Solução de problemas
-
-**As páginas do PDF saíram com tamanhos diferentes.**  
-Confirme que está usando a versão **1.2** e que selecionou **PDF** com formato de página fixo, por exemplo, A4. Se o problema for somente o tamanho visual do conteúdo, isso ocorre porque a proporção das imagens originais é diferente: a página A4 continua com tamanho fixo.
-
-**Uma imagem TIFF não abriu.**  
-Converta-a previamente para PNG ou JPG e importe novamente.
-
-**A exportação falhou ou o navegador ficou lento.**  
-Diminua a escala, reduza o número de imagens por lote ou exporte em PDF paginado em vez de gerar uma imagem única muito longa.
-
-**A qualidade não melhorou ao selecionar 300%.**  
-A escala amplia dimensões em pixels; ela não substitui uma digitalização de alta qualidade.
-
-## Histórico de versões
-
-| Versão | Principais recursos |
-| --- | --- |
-| 1.0 | Importação, ordenação, composição, prévia e exportação. |
-| 1.1 | Opção PDF destacada entre os formatos de exportação. |
-| **1.2** | **Correção da padronização do tamanho físico das páginas PDF**, seleção de papel e margens. |
-
-## Arquivo do aplicativo
-
-`PageForge_Studio_v1.2.html`
-
-O aplicativo é distribuído como um único arquivo HTML. Este README descreve os recursos e as limitações identificáveis na versão 1.2; não constitui certificação de testes completos em todos os navegadores e formatos.
+Nenhuma licença de código aberto foi definida neste documento. O titular do projeto poderá acrescentar um arquivo `LICENSE` ao repositório para especificar as condições de uso, modificação e distribuição.
